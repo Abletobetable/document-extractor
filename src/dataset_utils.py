@@ -4,11 +4,8 @@ functions for datasets
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from transformers import AutoTokenizer
 
 LUCKY_SEED = len('Kontur_DS_2023')
-
-tokenizer = AutoTokenizer.from_pretrained('/content/ru-document-tokenizer')
 
 def stratified_train_test_split(dataset):
     """

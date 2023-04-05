@@ -1,3 +1,14 @@
+"""
+functions for preparing features
+"""
+
+from transformers import AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained('/content/ru-document-tokenizer')
+
+# some models in hf requires right padding
+pad_on_right = tokenizer.padding_side == "right"
+
 def prepare_train_features(examples):
     
     # remove left whitespace
