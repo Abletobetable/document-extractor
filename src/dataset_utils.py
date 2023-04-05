@@ -56,3 +56,11 @@ def stratified_train_test_split(dataset):
     dataset['train'] = dataset['train'].select(train_indices.index)
 
     return dataset
+
+def get_training_corpus(dataset):
+    """
+    define generator for efficient tokenizer training
+    """
+    for start_idx in range(0, len(dataset['train']), 1000):
+        samples = dataset['train'][start_idx : start_idx + 1000]
+        yield samples["text"]
