@@ -7,7 +7,19 @@ from transformers import AutoTokenizer
 tokenizer = AutoTokenizer.from_pretrained('/content/ru-document-tokenizer')
 
 # some models in hf requires right padding
-pad_on_right = tokenizer.padding_side == "right"
+PAD_ON_RIGTH = tokenizer.padding_side == "right"
+
+# maximum length of a text
+MAX_LENGTH = 1000
+
+# overlap between two part of the context when splitting
+STRIDE=128
+
+# n best outputs from model for choosing right start and end positions
+N_BEST_SIZE = 20
+
+# maximum length of extracted part of document
+MAX_ANSWER_LENGTH = 100
 
 def prepare_train_features(examples):
     
@@ -18,11 +30,11 @@ def prepare_train_features(examples):
     # but keep the overflows using a stride.
     # So when document is to long it truncated in several examples with overlaps
     tokenized_examples = tokenizer(
-        examples["label" if pad_on_right else "text"],
-        examples["text" if pad_on_right else "label"],
-        truncation="only_second" if pad_on_right else "only_first",
-        max_length=384, # The maximum length of a text
-        stride=128, # overlap between two part of the context when splitting
+        examples["label" if PAD_ON_RIGTH else "text"],
+        examples["text" if PAD_ON_RIGTH else "label"],
+        truncation="only_second" if PAD_ON_RIGTH else "only_first",
+        max_length=MAX_LENGTH,
+        stride=STRIDE, # overlap between two part of the context when splitting
         return_overflowing_tokens=True,
         return_offsets_mapping=True,
         padding="max_length",
@@ -63,12 +75,12 @@ def prepare_train_features(examples):
 
             # Start token index of the current span in the text.
             token_start_index = 0
-            while sequence_ids[token_start_index] != (1 if pad_on_right else 0):
+            while sequence_ids[token_start_index] != (1 if PAD_ON_RIGTH else 0):
                 token_start_index += 1
 
             # End token index of the current span in the text.
             token_end_index = len(input_ids) - 1
-            while sequence_ids[token_end_index] != (1 if pad_on_right else 0):
+            while sequence_ids[token_end_index] != (1 if PAD_ON_RIGTH else 0):
                 token_end_index -= 1
 
             # Detect if the answer is out of the span (in which case this feature is labeled with the CLS index).
