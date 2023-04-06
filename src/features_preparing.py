@@ -8,11 +8,9 @@ tokenizer = AutoTokenizer.from_pretrained('/content/ru-document-tokenizer')
 
 PAD_ON_RIGHT = tokenizer.padding_side == "right"
 
-# some hyperparameters
+# preprocessing hyperparameters
 MAX_LENGTH = 1000 # length of document in batch
 STRIDE = 128 # overlap between features
-N_BEST_SIZE = 20 # number of best answers to keep for choosing final answer
-MAX_ANSWER_LENGTH = 100
 
 def prepare_train_features(examples):
     """
