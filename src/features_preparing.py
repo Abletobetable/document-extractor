@@ -2,15 +2,12 @@
 functions for preparing features
 """
 
+import os
 from transformers import AutoTokenizer
 
 tokenizer = AutoTokenizer.from_pretrained('/content/ru-document-tokenizer')
 
 PAD_ON_RIGHT = tokenizer.padding_side == "right"
-
-# preprocessing hyperparameters
-MAX_LENGTH = 1000 # length of document in batch
-STRIDE = 128 # overlap between features
 
 def prepare_train_features(examples):
     """
@@ -28,8 +25,8 @@ def prepare_train_features(examples):
         examples["label" if PAD_ON_RIGHT else "text"],
         examples["text" if PAD_ON_RIGHT else "label"],
         truncation="only_second" if PAD_ON_RIGHT else "only_first",
-        max_length=MAX_LENGTH,
-        stride=STRIDE, 
+        max_length=os.environ['max_length'],
+        stride=os.environ['stride'], 
         return_overflowing_tokens=True,
         return_offsets_mapping=True,
         padding="max_length",
@@ -117,8 +114,8 @@ def prepare_validation_features(examples):
         examples["label" if PAD_ON_RIGHT else "text"],
         examples["text" if PAD_ON_RIGHT else "label"],
         truncation="only_second" if PAD_ON_RIGHT else "only_first",
-        max_length=MAX_LENGTH,
-        stride=STRIDE,
+        max_length=os.environ['max_length'],
+        stride=os.environ['stride'],
         return_overflowing_tokens=True,
         return_offsets_mapping=True,
         padding="max_length",
