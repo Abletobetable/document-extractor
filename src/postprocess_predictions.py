@@ -4,7 +4,7 @@ functions for choosing the best prediction
 
 import collections
 import numpy as np
-from tqdm import tqdm
+from tqdm.auto import tqdm
 from transformers import AutoTokenizer
 
 tokenizer = AutoTokenizer.from_pretrained('/content/ru-document-tokenizer')
