@@ -41,7 +41,7 @@ parameters:
     - adamW
   scheduler:
     value: 'linear'
-  warmup_ration:
+  warmup_ratio:
     values:
     - 0.0
     - 0.10
