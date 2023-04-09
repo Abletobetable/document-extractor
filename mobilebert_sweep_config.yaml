@@ -1,0 +1,53 @@
+method: random
+metric:
+  goal: maximize
+  name: max_exact_match
+parameters:
+  batch_size:
+    value: 8
+  count_of_epoch:
+    values:
+    - 30
+  criterion:
+    value: CrossEntropyLoss
+  hidden_dropout_prob:
+    values:
+    - 0.0
+    - 0.3
+    - 0.6
+  attention_probs_dropout_prob:
+    values:
+    - 0.1
+    - 0.3
+    - 0.6
+  attention_probs_dropout_prob:
+    values:
+    - 0.0
+    - 0.2
+    - 0.5
+  lr:
+    max: 1.0e-04
+    min: 1.0e-08
+  max_length:
+    values:
+    - 512
+    - 386
+    - 256
+  model_name:
+    value:
+    - mobilebert
+  optimizer:
+    value:
+    - adamW
+  scheduler:
+    value: 'linear'
+  stride:
+    values:
+    - 128
+    - 186
+  weight_decay:
+    values:
+    - 0.0
+    - 0.01
+    - 0.001
+    - 0.0001
