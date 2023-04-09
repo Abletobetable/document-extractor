@@ -34,7 +34,7 @@ def postprocess_predictions(
     predictions = collections.OrderedDict()
 
     # loop over all the examples
-    for example_index, example in enumerate(tqdm(examples)):
+    for example_index, example in enumerate(tqdm(examples, leave=True)):
         # indices of the features associated to the current example
         feature_indices = features_per_example[example_index]
 
