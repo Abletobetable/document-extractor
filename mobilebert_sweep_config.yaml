@@ -6,8 +6,7 @@ parameters:
   batch_size:
     value: 8
   count_of_epoch:
-    values:
-    - 30
+    value: 30
   criterion:
     value: CrossEntropyLoss
   hidden_dropout_prob:
@@ -34,11 +33,9 @@ parameters:
     - 386
     - 256
   model_name:
-    value:
-    - mobilebert
+    value: 'mobilebert'
   optimizer:
-    value:
-    - adamW
+    value: 'adamW'
   scheduler:
     value: 'linear'
   warmup_ratio:
