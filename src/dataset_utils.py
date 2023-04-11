@@ -15,18 +15,20 @@ def stratified_train_test_split(dataset):
 
     Parameters:
     -----------
-        dataset (datasets.dataset_dict.DatasetDict):
-            dataset for splitting: has only 'train' field
+        dataset (datasets.arrow_dataset.Dataset):
+            dataset for splitting
     
     Return:
     -------
-        dataset (datasets.dataset_dict.DatasetDict):
-            splitted dataset, that has 'train' and 'test' fields
+        train (datasets.arrow_dataset.Dataset):
+            train part of dataset
+        test (datasets.arrow_dataset.Dataset):
+            test part of dataset
     """
 
     stratify_feature = []
 
-    for sample in dataset['train']:
+    for sample in dataset:
 
         one_hot_feature = ''
         if sample['label'] == 'обеспечение гарантийных обязательств':
@@ -52,10 +54,8 @@ def stratified_train_test_split(dataset):
                                                 shuffle=True,
                                                 random_state=LUCKY_SEED)
 
-    dataset['test'] = dataset['train'].select(test_indices.index)
-    dataset['train'] = dataset['train'].select(train_indices.index)
-
-    return dataset
+    return dataset.select(train_indices.index), \
+           dataset.select(test_indices.index)
 
 def get_training_corpus(dataset):
     """
