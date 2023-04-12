@@ -4,7 +4,7 @@ metric:
   name: max_exact_match
 parameters:
   batch_size:
-    value: 4
+    value: 2
   count_of_epoch:
     value: 3
   criterion:
