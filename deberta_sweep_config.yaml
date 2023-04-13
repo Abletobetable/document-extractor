@@ -6,19 +6,17 @@ parameters:
   batch_size:
     value: 2
   count_of_epoch:
-    value: 3
+    value: 4
   criterion:
     value: CrossEntropyLoss
   hidden_dropout_prob:
     values:
     - 0.1
     - 0.2
-    - 0.4
   attention_probs_dropout_prob:
     values:
     - 0.1
     - 0.2
-    - 0.4
   summary_last_dropout:
     values:
     - 0.0
@@ -32,6 +30,8 @@ parameters:
     - 0.000005
     - 0.000001
     - 0.000003
+    - 0.0000005 
+    - 0.0000001
   max_length:
     values:
     - 512
