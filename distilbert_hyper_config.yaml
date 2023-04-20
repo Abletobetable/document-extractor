@@ -1,0 +1,59 @@
+method: random
+metric:
+  goal: maximize
+  name: eval/max_exact_match
+parameters:
+  batch_size:
+    value: 16
+  count_of_epoch:
+    value: 30
+  criterion:
+    value: CrossEntropyLoss
+  dropout:
+    values:
+    - 0.1
+    - 0.3
+  qa_dropout:
+    values:
+    - 0.1
+    - 0.3
+  attention_dropout:
+    values:
+    - 0.1
+    - 0.3
+  seq_classif_dropout:
+    values:
+    - 0.2
+    - 0.4
+  lr:
+    values:
+    - 0.0001
+    - 0.00001
+    - 0.000005
+    - 0.000001
+    - 0.0000005
+  max_length:
+    values:
+    - 512
+    - 386
+    - 256
+  model_name:
+    value: 'distilbert'
+  optimizer:
+    value: 'adamW'
+  scheduler:
+    value: 'linear'
+  warmup_ratio:
+    values:
+    - 0.0
+    - 0.10
+    - 0.25
+  stride:
+    values:
+    - 128
+    - 186
+  weight_decay:
+    values:
+    - 0.0
+    - 0.01
+    - 0.0001
