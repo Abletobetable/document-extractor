@@ -37,15 +37,15 @@ So for train test split, I will use stratified strategy over random_split.
 
 Lengths of documents:
 
-<img src="lens_of_documents.png" alt="map" width="400"/>
+<img src="images/lens_of_documents.png" alt="map" width="400"/>
 
 Lengths of tokenized text:
 
-<img src="tokenized_text_lens.png" alt="map" width="400"/>
+<img src="images/tokenized_text_lens.png" alt="map" width="400"/>
 
 Lengths of tokenized answer:
 
-<img src="tokenized_answer_lens.png" alt="map" width="400"/>
+<img src="images/tokenized_answer_lens.png" alt="map" width="400"/>
 
 ## Proposed solution 🚳
 
@@ -69,15 +69,15 @@ Hyperparams optimization plots on validation test:
 
 deberta:
 
-<img src="deberta_hyper.png" alt="map" width="400"/>
+<img src="images/deberta_hyper.png" alt="map" width="400"/>
 
 distilbert:
 
-<img src="distilbert_hyper.png" alt="map" width="400"/>
+<img src="images/distilbert_hyper.png" alt="map" width="400"/>
 
 mdeberta:
 
-<img src="mdeberta_hyper.png" alt="map" width="400"/>
+<img src="images/mdeberta_hyper.png" alt="map" width="400"/>
 
 Then for best set of parameters I trained again models and test them on test set:
 
@@ -95,14 +95,14 @@ Then for best set of parameters I trained again models and test them on test set
 
 * mdeberta:
 
-    exact_match:
+    exact_match: 83.6
 
-    f1_score:
+    f1_score: 97.14
 
 I also add models on model hub:
 
 [deberta](https://huggingface.co/abletobetable/deberta-ru-qa), [distilbert](https://huggingface.co/abletobetable/distilbert-ru-qa), 
-#TODO[mdeberta]()
+[mdeberta](https://huggingface.co/abletobetable/mdeberta-ru-qa)
 
 ## How to improve 🔨
 And what could be done more:
